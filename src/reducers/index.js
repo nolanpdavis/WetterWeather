@@ -1,7 +1,7 @@
-import userReducer from './userReducer'
+import locationReducer from './locationReducer'
 
 export {
-	
-	userReducer
-	
+
+	locationReducer
+
 }

@@ -1,14 +1,14 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import { userReducer } from '../reducers'
+import { locationReducer } from '../reducers'
 
 var store
 export default {
 
-	configure: (initialState) => { // initialState can be null
-		
+	configureStore: (initialState) => { // initialState can be null
+
 		const reducers = combineReducers({ // insert reducers here
-			user: userReducer
+			location: locationReducer
 		})
 
 		if (initialState){

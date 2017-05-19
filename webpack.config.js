@@ -7,14 +7,14 @@ var config = require('./package.json')
 module.exports = {
 
 	entry: {
-		app: './src/index.js'
+		app: './src/app.js'
 	},
 	output: {
 		path: __dirname+'/dist',
 		filename: 'bundle/[name].js',
         sourceMapFilename: 'bundle/[name].map'
 	},
-	devtool: '#source-map',	
+	devtool: '#source-map',
 	plugins: process.env.NODE_ENV === 'production' ? [
 		new CommonsChunkPlugin({
 			name: 'commons',
@@ -37,7 +37,10 @@ module.exports = {
 			name: 'commons',
 			chunks: chunks
 		})
-	],	
+	],
+	node: {
+		fs: 'empty'
+	},
 	module: {
 		loaders: [
 			{
@@ -51,7 +54,7 @@ module.exports = {
 			{
 		        test: /\.json$/,
 		        loader: 'json-loader'
-		    },			
+		    },
 			{
 				test: /\.(jpg|png|svg)$/,
 				loader: 'file-loader',
@@ -60,9 +63,8 @@ module.exports = {
 					outputPath: 'images/',
 					publicPath: (config.server) ? '/' : 'dist/',
 					useRelativePath: false
-				}				
+				}
 			}
 		]
 	}
 }
-

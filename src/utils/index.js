@@ -1,8 +1,7 @@
-import TurboClient from './TurboClient'
-import APIManager from './APIManager'
+import GetWeather from './GetWeather'
 
 export {
 
-	TurboClient
+	GetWeather
 
 }
