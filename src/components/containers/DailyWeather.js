@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import actions from '../../actions'
 import { connect } from 'react-redux'
+import { getWeather } from '../../utils/GetWeather'
 
 class DailyWeather extends Component {
     // constructor(){
@@ -11,9 +12,8 @@ class DailyWeather extends Component {
     //     }
     // }
 
-    componentDidMount(){
-        // console.log('componentDidMount: '+this.props.locationReceived('Los Angeles'))
-
+    componentDidUpdate(){
+        getWeather(this.props.location)
     }
 
     render(){
