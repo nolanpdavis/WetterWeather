@@ -14759,6 +14759,8 @@ var _actions2 = _interopRequireDefault(_actions);
 
 var _reactRedux = __webpack_require__(78);
 
+var _GetWeather = __webpack_require__(236);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -14777,7 +14779,7 @@ var DailyWeather = function (_Component) {
     }
 
     _createClass(DailyWeather, [{
-        key: 'componentDidMount',
+        key: 'componentDidUpdate',
 
         // constructor(){
         //     super()
@@ -14786,9 +14788,8 @@ var DailyWeather = function (_Component) {
         //     }
         // }
 
-        value: function componentDidMount() {
-            // console.log('componentDidMount: '+this.props.locationReceived('Los Angeles'))
-
+        value: function componentDidUpdate() {
+            (0, _GetWeather.getWeather)(this.props.location);
         }
     }, {
         key: 'render',
@@ -14846,7 +14847,11 @@ var _reactDom = __webpack_require__(27);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _GetWeather = __webpack_require__(236);
+var _actions = __webpack_require__(132);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+var _reactRedux = __webpack_require__(78);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14862,20 +14867,40 @@ var LocationForm = function (_Component) {
     function LocationForm() {
         _classCallCheck(this, LocationForm);
 
-        return _possibleConstructorReturn(this, (LocationForm.__proto__ || Object.getPrototypeOf(LocationForm)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (LocationForm.__proto__ || Object.getPrototypeOf(LocationForm)).call(this));
+
+        _this.state = {
+            location: ''
+        };
+        return _this;
     }
 
     _createClass(LocationForm, [{
+        key: 'saveLocation',
+        value: function saveLocation(event) {
+            this.setState({
+                location: event.target.value
+            });
+        }
+    }, {
+        key: 'updateLocation',
+        value: function updateLocation() {
+            if (this.state.location.length < 4) {
+                return;
+            }
+            this.props.locationReceived(this.state.location);
+        }
+    }, {
         key: 'render',
         value: function render() {
 
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement('input', { type: 'text', placeholder: 'Where would you like to check the weather?' }),
+                _react2.default.createElement('input', { onChange: this.saveLocation.bind(this), type: 'text', placeholder: 'Where would you like to check the weather?' }),
                 _react2.default.createElement(
                     'button',
-                    { onClick: _GetWeather.getWeather },
+                    { onClick: this.updateLocation.bind(this) },
                     'Submit'
                 )
             );
@@ -14885,7 +14910,21 @@ var LocationForm = function (_Component) {
     return LocationForm;
 }(_react.Component);
 
-exports.default = LocationForm;
+var stateToProps = function stateToProps(state) {
+    return {
+        location: state.location.currentLocation
+    };
+};
+
+var dispatchToProps = function dispatchToProps(dispatch) {
+    return {
+        locationReceived: function locationReceived(location) {
+            return dispatch(_actions2.default.locationReceived(location));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(LocationForm);
 
 /***/ }),
 /* 231 */
@@ -15336,7 +15375,6 @@ exports.default = function () {
 
     switch (action.type) {
         case _constants2.default.LOCATION_RECEIVED:
-            // console.log('PROFILE_CREATED: '+JSON.stringify(action.profile))
             updated['currentLocation'] = action.location;
             return updated;
 
@@ -15350,7 +15388,7 @@ exports.default = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -15367,14 +15405,11 @@ __webpack_require__(294).load();
 
 function getWeather(city) {
 
-    var appId = process.env.WEATHER_APP_ID;
-
-    _superagent2.default.get('http://api.openweathermap.org/data/2.5/forecast/daily?q=Atlanta,us&cnt=7&units=imperial&appid=7c33083f5e2dd7eda0bf3020714ae680').query().set('Accept', 'application/json').end(function (err, response) {
+    _superagent2.default.get('http://api.openweathermap.org/data/2.5/forecast/daily?q=' + city + '&cnt=7&units=imperial&appid=7c33083f5e2dd7eda0bf3020714ae680').query().set('Accept', 'application/json').end(function (err, response) {
         if (err) alert(err);
         console.log("API Request: " + JSON.stringify(response.body));
     });
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 237 */
