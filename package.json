@@ -31,6 +31,7 @@
     "react-dom": "latest",
     "react-dropzone": "latest",
     "react-google-maps": "^6.3.0",
+    "react-icons": "^2.2.5",
     "react-redux": "latest",
     "react-time": "latest",
     "redux": "latest",
