@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import actions from '../../actions'
 import { connect } from 'react-redux'
+import { getWeather } from '../../utils/GetWeather'
 
 
 class LocationForm extends Component {
@@ -23,7 +24,9 @@ class LocationForm extends Component {
         if (this.state.location.length < 4) {
             return
         }
-        this.props.locationReceived(this.state.location)
+        getWeather(this.state.location, (err, response) => {
+            this.props.weatherReceived(response)
+        })
     }
 
 
@@ -43,13 +46,13 @@ class LocationForm extends Component {
 
 const stateToProps = (state) => {
     return {
-        location: state.location.currentLocation
+        weather: state.weather.currentWeather
     }
 }
 
 const dispatchToProps = (dispatch) => {
     return {
-        locationReceived: (location) => dispatch(actions.locationReceived(location))
+        weatherReceived: (weather) => dispatch(actions.weatherReceived(weather))
     }
 }
 

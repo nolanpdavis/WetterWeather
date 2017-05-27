@@ -2,10 +2,10 @@ import constants from '../constants'
 
 export default {
 
-	locationReceived: (location) => {
+	weatherReceived: (weather) => {
 		return {
-			type: constants.LOCATION_RECEIVED,
-			location: location
+			type: constants.WEATHER_RECEIVED,
+			weather: weather
 		}
 	}
 

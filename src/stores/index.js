@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import { locationReducer } from '../reducers'
+import {  weatherReducer } from '../reducers'
 
 var store
 export default {
@@ -8,7 +8,7 @@ export default {
 	configureStore: (initialState) => { // initialState can be null
 
 		const reducers = combineReducers({ // insert reducers here
-			location: locationReducer
+			weather: weatherReducer
 		})
 
 		if (initialState){

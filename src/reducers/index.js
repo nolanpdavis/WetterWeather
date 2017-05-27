@@ -1,7 +1,7 @@
-import locationReducer from './locationReducer'
+import weatherReducer from './weatherReducer'
 
 export {
 
-	locationReducer
+	weatherReducer
 
 }
