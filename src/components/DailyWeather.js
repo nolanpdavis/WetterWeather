@@ -17,20 +17,14 @@ class DailyWeather extends Component {
         const city = this.props.weather.city.name
         const days = this.props.weather.list
 
-        const parentStyles = {
-            display: "flex",
-            justifyContent: "space-around",
-        }
-
-        const childStyles = {}
-
 
         return (
             <div>
                 <h1>{city}</h1>
-                <div style={parentStyles}>
+                <div className="weatherList">
                     { (days == null) ? null : days.map((day, i) =>{
                                 return <div key={i} >
+                                        <i className={"wi wi-owm-" + this.props.weather.list[i].weather[0].id}></i>
                                         <p>Max: {days[i].temp.max}</p>
                                         <p>Min: {days[i].temp.min}</p>
                                         <p>{days[i].weather[0].description}</p>

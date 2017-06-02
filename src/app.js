@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Home, LocationForm, DailyWeather, Radar } from './components'
 import store from './stores'
 import { Provider } from 'react-redux'
-require('../index.html')
+import style from '../assets/css/main.scss'
 
 /* The Elements components is a summary of basic presentation componets
  * available for use in this theme

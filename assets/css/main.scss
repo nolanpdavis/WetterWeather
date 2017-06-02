@@ -1,0 +1,16 @@
+@import './weather-icons.css';
+
+.weatherList {
+    display: flex;
+    justify-content: space-around;
+}
+
+.leaflet-container {
+    height: 80vh;
+    width: 90%;
+}
+
+.mapContainer {
+    display: flex;
+    justify-content: space-around;
+}

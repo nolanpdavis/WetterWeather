@@ -43040,7 +43040,7 @@ exports.default = {
 /* 301 */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en-US\">\n<head>\n\t<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n\t<link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.0.3/dist/leaflet.css\"\n  integrity=\"sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==\"\n  crossorigin=\"\"/>\n</head>\n\n<body>\n\t<div id=\"root\">\n\t</div>\n\t<script type=\"text/javascript\" src=\"dist/js/vendor.min.js\"></script>\n\t<script type=\"text/javascript\" src=\"dist/bundle/commons.js\"></script>\n\t<script type=\"text/javascript\" src=\"dist/bundle/app.js\"></script>\n</body>\n</html>\n";
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 302 */
@@ -43067,6 +43067,10 @@ var _stores2 = _interopRequireDefault(_stores);
 
 var _reactRedux = __webpack_require__(51);
 
+var _main = __webpack_require__(301);
+
+var _main2 = _interopRequireDefault(_main);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43074,8 +43078,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-__webpack_require__(301);
 
 /* The Elements components is a summary of basic presentation componets
  * available for use in this theme
@@ -43174,15 +43176,10 @@ var DailyWeather = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
+            var _this3 = this;
+
             var city = this.props.weather.city.name;
             var days = this.props.weather.list;
-
-            var parentStyles = {
-                display: "flex",
-                justifyContent: "space-around"
-            };
-
-            var childStyles = {};
 
             return _react2.default.createElement(
                 'div',
@@ -43194,11 +43191,12 @@ var DailyWeather = function (_Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { style: parentStyles },
+                    { className: 'weatherList' },
                     days == null ? null : days.map(function (day, i) {
                         return _react2.default.createElement(
                             'div',
                             { key: i },
+                            _react2.default.createElement('i', { className: "wi wi-owm-" + _this3.props.weather.list[i].weather[0].id }),
                             _react2.default.createElement(
                                 'p',
                                 null,
@@ -43372,17 +43370,13 @@ var Radar = function (_Component) {
         value: function render() {
 
             var mapCenter = [this.props.weather.city.coord.lat, this.props.weather.city.coord.lon];
-            var mapStyle = {
-                height: "400px",
-                width: "100%"
-            };
 
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'mapContainer' },
                 _react2.default.createElement(
                     _reactLeaflet.Map,
-                    { center: mapCenter, zoom: 10, style: mapStyle },
+                    { center: mapCenter, zoom: 10 },
                     _react2.default.createElement(_reactLeaflet.TileLayer, {
                         attribution: '\xA9 <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
                         url: 'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'

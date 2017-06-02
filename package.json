@@ -51,6 +51,7 @@
     "chai": "latest",
     "chai-http": "latest",
     "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.0",
     "gulp": "latest",
     "gulp-6to5": "latest",
     "gulp-autoprefixer": "latest",
@@ -64,6 +65,8 @@
     "mocha": "latest",
     "mocha-jscs": "latest",
     "mocha-jshint": "latest",
-    "style-loader": "latest"
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.1"
   }
 }

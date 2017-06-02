@@ -9,14 +9,10 @@ class Radar extends Component {
     render(){
 
         const mapCenter = [this.props.weather.city.coord.lat, this.props.weather.city.coord.lon]
-        const mapStyle = {
-            height: "400px",
-            width: "100%",
-        }
 
         return (
-            <div>
-                <Map center={mapCenter} zoom={10} style={mapStyle}>
+            <div className="mapContainer">
+                <Map center={mapCenter} zoom={10}>
                     <TileLayer
                       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                       url='http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
