@@ -64,7 +64,15 @@ module.exports = {
 					publicPath: (config.server) ? '/' : 'dist/',
 					useRelativePath: false
 				}
-			}
+			},
+			{
+		        test: /\.css$/,
+		        loaders: ['css-loader', 'style-loader']
+		    },
+			{
+		        test: /\.html$/,
+		        loaders: ['html-loader']
+		    },
 		]
 	}
 }
