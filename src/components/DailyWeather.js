@@ -20,16 +20,15 @@ class DailyWeather extends Component {
 
         return (
             <div>
-                <h1>{city}</h1>
+                <h2>{city}</h2>
                 <div className="weatherList">
                     { (days == null) ? null : days.map((day, i) =>{
-                                return <div key={i} >
+                                return <div key={i} className="weatherDay">
+                                        <h3>{Moment(days[i].dt * 1000).format('dddd')}</h3>
                                         <i className={"wi wi-owm-" + this.props.weather.list[i].weather[0].id}></i>
-                                        <p>Max: {days[i].temp.max}</p>
-                                        <p>Min: {days[i].temp.min}</p>
+                                        <p>High: {days[i].temp.max}</p>
+                                        <p>Low: {days[i].temp.min}</p>
                                         <p>{days[i].weather[0].description}</p>
-                                        <p>{Moment(days[i].dt * 1000).format('dddd')}</p>
-                                        <hr />
                                     </div>
                             })
                         }

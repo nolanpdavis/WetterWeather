@@ -26545,7 +26545,7 @@ var LocationForm = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'locationForm' },
                 _react2.default.createElement('input', { onChange: this.saveLocation.bind(this), type: 'text', placeholder: 'Where would you like to check the weather?' }),
                 _react2.default.createElement(
                     'button',
@@ -43079,9 +43079,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-/* The Elements components is a summary of basic presentation componets
- * available for use in this theme
- */
+var leafRain = __webpack_require__(323);
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -43095,12 +43093,19 @@ var App = function (_Component) {
     _createClass(App, [{
         key: 'render',
         value: function render() {
+
+            var headerStyle = {
+                backgroundImage: 'url(' + leafRain + ')',
+                backgroundSize: "cover",
+                backgroundAttachment: "fixed"
+            };
+
             return _react2.default.createElement(
                 _reactRedux.Provider,
                 { store: _stores2.default.configureStore() },
                 _react2.default.createElement(
                     'div',
-                    null,
+                    { style: headerStyle },
                     _react2.default.createElement(_components.Home, null),
                     _react2.default.createElement(_components.DailyWeather, null),
                     _react2.default.createElement(_components.Radar, null)
@@ -43185,7 +43190,7 @@ var DailyWeather = function (_Component) {
                 'div',
                 null,
                 _react2.default.createElement(
-                    'h1',
+                    'h2',
                     null,
                     city
                 ),
@@ -43195,31 +43200,30 @@ var DailyWeather = function (_Component) {
                     days == null ? null : days.map(function (day, i) {
                         return _react2.default.createElement(
                             'div',
-                            { key: i },
+                            { key: i, className: 'weatherDay' },
+                            _react2.default.createElement(
+                                'h3',
+                                null,
+                                (0, _moment2.default)(days[i].dt * 1000).format('dddd')
+                            ),
                             _react2.default.createElement('i', { className: "wi wi-owm-" + _this3.props.weather.list[i].weather[0].id }),
                             _react2.default.createElement(
                                 'p',
                                 null,
-                                'Max: ',
+                                'High: ',
                                 days[i].temp.max
                             ),
                             _react2.default.createElement(
                                 'p',
                                 null,
-                                'Min: ',
+                                'Low: ',
                                 days[i].temp.min
                             ),
                             _react2.default.createElement(
                                 'p',
                                 null,
                                 days[i].weather[0].description
-                            ),
-                            _react2.default.createElement(
-                                'p',
-                                null,
-                                (0, _moment2.default)(days[i].dt * 1000).format('dddd')
-                            ),
-                            _react2.default.createElement('hr', null)
+                            )
                         );
                     })
                 )
@@ -43295,14 +43299,9 @@ var Home = function (_Component) {
         key: 'render',
         value: function render() {
 
-            var headerStyle = {
-                backgroundImage: 'url(' + leafRain + ')',
-                backgroundSize: "100% 100%"
-            };
-
             return _react2.default.createElement(
                 'div',
-                { style: headerStyle },
+                { className: 'homeHeader' },
                 _react2.default.createElement(
                     'h1',
                     null,
@@ -43310,7 +43309,7 @@ var Home = function (_Component) {
                 ),
                 _react2.default.createElement(
                     'p',
-                    null,
+                    { className: 'homeText' },
                     'A weather & radar app built using Node, Express, React & Redux.'
                 ),
                 _react2.default.createElement(_LocationForm2.default, null)
@@ -43379,7 +43378,11 @@ var Radar = function (_Component) {
                     { center: mapCenter, zoom: 10 },
                     _react2.default.createElement(_reactLeaflet.TileLayer, {
                         attribution: '\xA9 <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-                        url: 'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
+                        url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+                    }),
+                    _react2.default.createElement(_reactLeaflet.TileLayer, {
+                        attribution: '\xA9 <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+                        url: 'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.png'
                     }),
                     _react2.default.createElement(_reactLeaflet.TileLayer, {
                         attribution: '\xA9 <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',

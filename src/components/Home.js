@@ -9,15 +9,10 @@ class Home extends Component {
 
     render(){
 
-        const headerStyle = {
-            backgroundImage: 'url('+ leafRain + ')',
-            backgroundSize: "100% 100%"
-        }
-
         return (
-                <div style={ headerStyle }>
+                <div className="homeHeader" >
                     <h1>Wetter.Weather</h1>
-                    <p>A weather & radar app built using Node, Express, React & Redux.</p>
+                    <p className="homeText">A weather & radar app built using Node, Express, React & Redux.</p>
                     <LocationForm />
                 </div>
         )

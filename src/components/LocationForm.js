@@ -35,7 +35,7 @@ class LocationForm extends Component {
 
 
         return (
-            <div>
+            <div className="locationForm">
                 <input onChange={this.saveLocation.bind(this)} type="text" placeholder="Where would you like to check the weather?"/>
                 <button onClick={this.updateLocation.bind(this)}>Submit</button>
             </div>
