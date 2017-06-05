@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import actions from '../actions'
 import { connect } from 'react-redux'
-import { getWeather } from '../utils/GetWeather'
+import { getWeather } from '../utils/getWeather'
 import Moment from 'moment'
 
 class DailyWeather extends Component {
@@ -17,6 +17,10 @@ class DailyWeather extends Component {
         const city = this.props.weather.city.name
         const days = this.props.weather.list
 
+        const toFahrenheit = (num) => {
+            return Math.round(num * 10) / 10 + "°F"
+        }
+
 
         return (
             <div>
@@ -26,9 +30,9 @@ class DailyWeather extends Component {
                                 return <div key={i} className="weatherDay">
                                         <h3>{Moment(days[i].dt * 1000).format('dddd')}</h3>
                                         <i className={"wi wi-owm-" + this.props.weather.list[i].weather[0].id}></i>
-                                        <p>High: {days[i].temp.max}</p>
-                                        <p>Low: {days[i].temp.min}</p>
-                                        <p>{days[i].weather[0].description}</p>
+                                        <p className="weatherDescription">{days[i].weather[0].description}</p>
+                                        <p className="weatherTemp">High: {toFahrenheit(days[i].temp.max)}</p>
+                                        <p className="weatherTemp">Low: {toFahrenheit(days[i].temp.min)}</p>
                                     </div>
                             })
                         }

@@ -1,7 +1,9 @@
-import GetWeather from './GetWeather'
+import getWeather from './getWeather'
+import imgPicker from './imgPicker'
 
 export {
 
-	GetWeather
+	getWeather,
+	imgPicker
 
 }

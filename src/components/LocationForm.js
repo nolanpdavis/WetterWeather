@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import actions from '../actions'
 import { connect } from 'react-redux'
-import { getWeather } from '../utils/GetWeather'
+import { getWeather } from '../utils/getWeather'
 
 
 class LocationForm extends Component {
@@ -36,8 +36,10 @@ class LocationForm extends Component {
 
         return (
             <div className="locationForm">
-                <input onChange={this.saveLocation.bind(this)} type="text" placeholder="Where would you like to check the weather?"/>
-                <button onClick={this.updateLocation.bind(this)}>Submit</button>
+                <div className="inputContainer">
+                    <input onChange={this.saveLocation.bind(this)} type="text" placeholder="Where would you like to check the weather?"/>
+                    <button onClick={this.updateLocation.bind(this)}>Submit</button>
+                </div>
             </div>
 
         )

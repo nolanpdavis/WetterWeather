@@ -28,6 +28,7 @@
     "moment": "latest",
     "morgan": "latest",
     "react": "latest",
+    "react-animations": "^0.1.0",
     "react-bootstrap": "latest",
     "react-dom": "latest",
     "react-dropzone": "latest",
