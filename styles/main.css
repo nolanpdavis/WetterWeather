@@ -1841,10 +1841,16 @@ body {
 
 h1 {
   font-size: 64px;
-  margin: 0;
-  padding: 40px 0 0 40px;
   color: blanchedalmond;
-  font-family: 'Quicksand', sans-serif; }
+  font-family: 'Inconsolata', sans-serif;
+  display: inline; }
+
+.wetter {
+  color: white;
+  margin-left: 40px; }
+
+.headerBox {
+  padding-top: 40px; }
 
 .homeText {
   font-size: 16px;
@@ -1856,26 +1862,33 @@ h1 {
 .locationForm {
   display: flex;
   justify-content: center;
-  padding: 80px 0 80px 0; }
+  padding: 120px 0 120px 0; }
+
+.inputContainer {
+  width: 80%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center; }
 
 input {
   border: none;
   background-color: rgba(25, 25, 25, 0.75);
   width: 60%;
-  border-radius: 5px;
   line-height: 40px;
   text-align: center;
   margin-right: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inconsolata', sans-serif;
   color: white;
   font-size: 20px; }
 
 input::placeholder {
   color: white;
-  font-size: 20px; }
+  font-size: 20px;
+  font-weight: lighter;
+  font-family: 'Inconsolata', sans-serif; }
 
 input[type=text]:focus {
   color: white;
@@ -1897,28 +1910,39 @@ input:focus:-ms-input-placeholder {
 
 /* IE 10+ */
 button {
-  border-radius: 5px;
   border: none;
   background-color: white;
-  font-family: 'Quicksand', sans-serif; }
+  font-family: 'Inconsolata', sans-serif;
+  font-weight: bold; }
 
 h2 {
   text-align: center;
-  letter-spacing: 2px;
-  background-color: rgba(250, 250, 250, 0.95);
+  font-size: 36px;
+  letter-spacing: 3px;
+  background-color: rgba(250, 250, 250, 0.9);
   padding: 20px 0 20px 0;
   margin: 0;
-  font-family: 'Quicksand', sans-serif; }
+  font-family: 'Inconsolata', sans-serif;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em; }
 
 .weatherList {
   display: flex;
-  justify-content: space-around;
-  background-color: rgba(250, 250, 250, 0.95);
+  justify-content: space-between;
+  background-color: rgba(250, 250, 250, 0.9);
   flex-wrap: wrap;
-  font-family: 'Cabin', sans-serif; }
+  font-family: 'Cabin', sans-serif;
+  padding: 0 5% 0 5%; }
 
 .weatherDay {
   text-align: center; }
+
+.weatherDescription {
+  padding-bottom: 40px;
+  font-style: italic; }
+
+.weatherTemp {
+  font-weight: bold; }
 
 i {
   font-size: 60px; }
@@ -1930,7 +1954,7 @@ i {
 .mapContainer {
   display: flex;
   justify-content: space-around;
-  background-color: rgba(250, 250, 250, 0.95);
-  padding-top: 40px; }
+  background-color: rgba(250, 250, 250, 0.9);
+  padding: 40px 0 40px 0; }
 
 /*# sourceMappingURL=../bundle/app.map*/
