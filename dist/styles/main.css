@@ -1932,7 +1932,7 @@ h2 {
   background-color: rgba(250, 250, 250, 0.9);
   flex-wrap: wrap;
   font-family: 'Cabin', sans-serif;
-  padding: 0 5% 0 5%; }
+  padding: 0 5% 12px 5%; }
 
 .weatherDay {
   text-align: center; }
@@ -1942,10 +1942,13 @@ h2 {
   font-style: italic; }
 
 .weatherTemp {
-  font-weight: bold; }
+  font-weight: bolder; }
 
 i {
   font-size: 60px; }
+
+.radar {
+  margin-top: 120px; }
 
 .leaflet-container {
   height: 75vh;
@@ -1955,6 +1958,12 @@ i {
   display: flex;
   justify-content: space-around;
   background-color: rgba(250, 250, 250, 0.9);
-  padding: 40px 0 40px 0; }
+  padding-bottom: 40px; }
+
+.react-parallax {
+  overflow: visible !important; }
+
+.parallax {
+  z-index: -1; }
 
 /*# sourceMappingURL=../bundle/app.map*/

@@ -34,6 +34,7 @@
     "react-dropzone": "latest",
     "react-icons": "^2.2.5",
     "react-leaflet": "^1.2.0",
+    "react-parallax": "^1.4.1",
     "react-redux": "latest",
     "react-time": "latest",
     "redux": "latest",

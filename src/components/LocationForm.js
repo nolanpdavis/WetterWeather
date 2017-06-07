@@ -20,7 +20,8 @@ class LocationForm extends Component {
 
     }
 
-    updateLocation(){
+    updateLocation(event){
+        event.preventDefault()
         if (this.state.location.length < 4) {
             return
         }
@@ -36,10 +37,10 @@ class LocationForm extends Component {
 
         return (
             <div className="locationForm">
-                <div className="inputContainer">
+                <form className="inputContainer" onSubmit={this.updateLocation.bind(this)}>
                     <input onChange={this.saveLocation.bind(this)} type="text" placeholder="Where would you like to check the weather?"/>
-                    <button onClick={this.updateLocation.bind(this)}>Submit</button>
-                </div>
+                    <button onClick={this.updateLocation.bind(this)} type="submit">Submit</button>
+                </form>
             </div>
 
         )

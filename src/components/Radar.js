@@ -8,7 +8,7 @@ class Radar extends Component {
 
     recenter(){
         let mapCenter = [this.props.weather.city.coord.lat, this.props.weather.city.coord.lon]
-        this.refs.map.leafletElement.flyTo(mapCenter, 10)
+        this.refs.map.leafletElement.flyTo(mapCenter, 9)
     }
 
     render(){
@@ -16,21 +16,30 @@ class Radar extends Component {
         const mapCenter = [this.props.weather.city.coord.lat, this.props.weather.city.coord.lon]
 
         return (
-            <div className="mapContainer">
-                <Map center={mapCenter} zoom={8} useFlyTo={true} ref="map">
-                    <TileLayer
-                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                      url='http://sat.owm.io/sql/{z}/{x}/{y}?select=b4,b3,b2&from=modis&where=now&order=last&color=none&APPID=cb0e986554cfd5cc3e2dae65a53cede3'
-                    />
-                    <TileLayer
-                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                      url='http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=7c33083f5e2dd7eda0bf3020714ae680'
-                      />
-                    <Marker
-                        position={mapCenter}
-                        onClick={this.recenter.bind(this)}
+            <div>
+                <div className="radar">
+                    <h2>Weather Forecast Radar</h2>
+                </div>
+                <div className="mapContainer">
+                    <Map center={mapCenter} zoom={8} maxZoom={9} minZoom={6} useFlyTo={true} ref="map">
+                        <TileLayer
+                          attribution='Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (<a href="https://earthdata.nasa.gov">ESDIS</a>) with funding provided by NASA/HQ.'
+                          url='http://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_CorrectedReflectance_TrueColor/default/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg'
                         />
-                </Map>
+                        <TileLayer
+                          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                          url='http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=7c33083f5e2dd7eda0bf3020714ae680'
+                          />
+                          <TileLayer
+                            attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                            url='http://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}.png'
+                            />
+                        <Marker
+                            position={mapCenter}
+                            onClick={this.recenter.bind(this)}
+                            />
+                    </Map>
+                </div>
             </div>
 
         )
