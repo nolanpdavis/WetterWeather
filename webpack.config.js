@@ -3,7 +3,7 @@ var path = require('path')
 var CommonsChunkPlugin = new require('webpack/lib/optimize/CommonsChunkPlugin')
 var chunks = ['app']
 var config = require('./package.json')
-var ExtractTextPlugin = new require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 
@@ -32,7 +32,10 @@ module.exports = {
 		        warnings: false,
 		        drop_console: true
 		    }
-    	})
+    	}),
+		new ExtractTextPlugin({ filename: 'styles/main.css',
+		   allChunks: true
+	   })
 	] : [
 		new CommonsChunkPlugin({
 			name: 'commons',

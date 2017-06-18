@@ -43,6 +43,7 @@
     "stripe": "latest",
     "superagent": "latest",
     "turbo360": "latest",
+    "extract-text-webpack-plugin": "^2.1.0",
     "webpack": "latest"
   },
   "devDependencies": {
