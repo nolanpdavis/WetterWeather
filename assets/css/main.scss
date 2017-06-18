@@ -143,5 +143,9 @@ i {
 }
 
 .parallax{
-    z-index: -1;   
+    z-index: -1;
+}
+
+img.react-parallax-bgimage {
+    background-size: cover;
 }

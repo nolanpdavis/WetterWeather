@@ -24,8 +24,6 @@ class Background extends Component {
 
         const weatherImage = imgPicker(weatherId)
 
-
-
         return (
             <div>
                 <Parallax className="parallax"
