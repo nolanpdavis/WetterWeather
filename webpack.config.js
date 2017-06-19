@@ -11,7 +11,7 @@ module.exports = {
 		app: './src/app.js'
 	},
 	output: {
-		path: __dirname+'/dist',
+		path: __dirname+'/build',
 		filename: 'bundle/[name].js',
         sourceMapFilename: 'bundle/[name].map'
 	},
@@ -68,7 +68,7 @@ module.exports = {
 				query: {
 					name: '[name].[ext]',
 					outputPath: 'images/',
-					publicPath: (config.server) ? '/' : 'dist/',
+					publicPath: (config.server) ? '/' : 'build/',
 					useRelativePath: false
 				}
 			},
@@ -82,7 +82,7 @@ module.exports = {
 				query: {
 					name: '[name].[ext]',
 					outputPath: 'styles/',
-					publicPath: (config.server) ? '/' : 'dist/',
+					publicPath: (config.server) ? '/' : 'build/',
 					useRelativePath: false
 				}
 		    }

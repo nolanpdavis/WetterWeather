@@ -1,13 +1,16 @@
 {
   "name": "wetter-weather",
+  "homepage": "https://nolanpdavis.github.io/WetterWeather/",
   "version": "0.0.0",
   "server": true,
   "private": true,
   "scripts": {
-    "clean": "rm -rf ./dist",
+    "clean": "rm -rf ./build",
     "build": "npm run clean && NODE_ENV=production webpack && gulp prod",
     "postinstall": "npm run build",
-    "start": "node server"
+    "start": "node server",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "aws-sdk": "latest",
