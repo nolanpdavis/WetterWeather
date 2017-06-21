@@ -24,15 +24,15 @@ class Radar extends Component {
                     <Map center={mapCenter} zoom={8} maxZoom={9} minZoom={6} useFlyTo={true} ref="map">
                         <TileLayer
                           attribution='Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (<a href="https://earthdata.nasa.gov">ESDIS</a>) with funding provided by NASA/HQ.'
-                          url='https://crossorigin.me/http://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_CorrectedReflectance_TrueColor/default/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg'
+                          url='http://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_CorrectedReflectance_TrueColor/default/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg'
                         />
                         <TileLayer
                           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                          url='https://crossorigin.me/http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=7c33083f5e2dd7eda0bf3020714ae680'
+                          url='http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=7c33083f5e2dd7eda0bf3020714ae680'
                           />
                           <TileLayer
                             attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                            url='https://crossorigin.me/http://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}.png'
+                            url='http://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}.png'
                             />
                         <Marker
                             position={mapCenter}
