@@ -105,6 +105,22 @@ h2 {
 
 }
 
+@media (max-width: 800px) {
+    .weatherList {
+        flex-direction: column;
+    }
+
+    .weatherDay {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid black;
+    }
+
+    input, input::placeholder, input[type=text]:focus  {
+        font-size: 12px;
+    }
+}
+
 .weatherDay {
     text-align: center;
 }

@@ -3,7 +3,6 @@ var path = require('path')
 var CommonsChunkPlugin = new require('webpack/lib/optimize/CommonsChunkPlugin')
 var chunks = ['app']
 var config = require('./package.json')
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 
@@ -11,7 +10,7 @@ module.exports = {
 		app: './src/app.js'
 	},
 	output: {
-		path: __dirname+'/build',
+		path: __dirname+'/build/',
 		filename: 'bundle/[name].js',
         sourceMapFilename: 'bundle/[name].map'
 	},
@@ -33,17 +32,11 @@ module.exports = {
 		        drop_console: true
 		    }
     	}),
-		new ExtractTextPlugin({ filename: 'styles/main.css',
-		   allChunks: true
-	   })
 	] : [
 		new CommonsChunkPlugin({
 			name: 'commons',
 			chunks: chunks
 		}),
-		new ExtractTextPlugin({ filename: 'styles/main.css',
-		   allChunks: true
-	   })
 	],
 	node: {
 		fs: 'empty'
@@ -74,7 +67,7 @@ module.exports = {
 			},
 			{
 		        test: /\.(scss|css)$/,
-		        loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+		        loader: 'style-loader!css-loader!sass-loader'
 		    },
 			{
 		        test: /\.(eot|woff2|woff|ttf)$/,
