@@ -57,13 +57,7 @@ module.exports = {
 		    },
 			{
 				test: /\.(jpg|png|svg)$/,
-				loader: 'file-loader',
-				query: {
-					name: '[name].[ext]',
-					outputPath: 'images/',
-					publicPath: (config.server) ? '/' : 'build/',
-					useRelativePath: false
-				}
+				loader: 'url-loader'
 			},
 			{
 		        test: /\.(scss|css)$/,
@@ -71,13 +65,7 @@ module.exports = {
 		    },
 			{
 		        test: /\.(eot|woff2|woff|ttf)$/,
-		        loader: 'file-loader',
-				query: {
-					name: '[name].[ext]',
-					outputPath: 'styles/',
-					publicPath: (config.server) ? '/' : 'build/',
-					useRelativePath: false
-				}
+		        loader: 'url-loader'
 		    }
 		]
 	}

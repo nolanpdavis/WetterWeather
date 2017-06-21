@@ -28,7 +28,7 @@ class Background extends Component {
             <div>
                 <Parallax className="parallax"
                     bgImage={weatherImage}
-                    strength={200}/>
+                    strength={250}/>
                 <Home />
                 <DailyWeather />
                 <Radar />
