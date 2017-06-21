@@ -7,7 +7,6 @@ import { getWeather } from '../utils/getWeather'
 import Home from './Home'
 import DailyWeather from './DailyWeather'
 import Radar from './Radar'
-import { Parallax } from 'react-parallax'
 
 
 class Background extends Component {
@@ -24,11 +23,15 @@ class Background extends Component {
 
         const weatherImage = imgPicker(weatherId)
 
+        const backgroundImage = {
+            backgroundImage: 'url('+ weatherImage + ')',
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed"
+        }
+
+
         return (
-            <div>
-                <Parallax className="parallax"
-                    bgImage={weatherImage}
-                    strength={250}/>
+            <div style={backgroundImage}>
                 <Home />
                 <DailyWeather />
                 <Radar />
