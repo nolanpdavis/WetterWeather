@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf ./build",
-    "build": "npm run clean && NODE_ENV=production webpack && gulp prod",
+    "build": "npm run clean && NODE_ENV=production webpack",
     "postinstall": "npm run build",
     "start": "node server",
     "predeploy": "npm run build",
