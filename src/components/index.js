@@ -1,12 +1,12 @@
 import LocationForm from './LocationForm'
 import DailyWeather from './DailyWeather'
-import Home from './Home'
+import Header from './Header'
 import Radar from './Radar'
 import Background from './Background'
 
 export {
 
-	Home,
+	Header,
 	LocationForm,
 	DailyWeather,
 	Radar,

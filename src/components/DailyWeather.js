@@ -21,22 +21,25 @@ class DailyWeather extends Component {
             return Math.round(num * 10) / 10 + "°F"
         }
 
-
         return (
-            <div>
-                <h2>{city}</h2>
-                <div className="weatherList">
-                    { (days == null) ? null : days.map((day, i) =>{
-                                return <div key={i} className="weatherDay">
+            <div className="weatherBox">
+              <div className="flexBox">
+                <h2 className="cityName">{city}</h2>
+              </div>
+              <div className="weatherList">
+                  { (days == null) ? null : days.map((day, i) =>{
+                              return <div key={i} className="weatherDay" style={{backgroundColor: 'rgba(0, 0, 0, '+ eval(.9 - i*.1) +')'}}>
+                                      <div className="flexItem">
                                         <h3>{Moment(days[i].dt * 1000).format('dddd')}</h3>
                                         <i className={"wi wi-owm-" + this.props.weather.list[i].weather[0].id}></i>
                                         <p className="weatherDescription">{days[i].weather[0].description}</p>
                                         <p className="weatherTemp">High: {toFahrenheit(days[i].temp.max)}</p>
                                         <p className="weatherTemp">Low: {toFahrenheit(days[i].temp.min)}</p>
-                                    </div>
-                            })
-                        }
-                </div>
+                                      </div>
+                                  </div>
+                          })
+                      }
+              </div>
             </div>
 
         )

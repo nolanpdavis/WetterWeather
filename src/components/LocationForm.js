@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import actions from '../actions'
 import { connect } from 'react-redux'
 import { getWeather } from '../utils/getWeather'
+import { getWeatherByZip } from '../utils/getWeatherByZip'
 
 
 class LocationForm extends Component {
@@ -22,12 +23,23 @@ class LocationForm extends Component {
 
     updateLocation(event){
         event.preventDefault()
-        if (this.state.location.length < 4) {
+
+        if (this.state.location.length < 3) {
             return
         }
-        getWeather(this.state.location, (err, response) => {
-            this.props.weatherReceived(response)
-        })
+
+        if (Number.isNaN(parseInt(this.state.location))) {
+          getWeather(this.state.location, (err, response) => {
+              this.props.weatherReceived(response)
+            })
+        }
+
+        else {
+          getWeatherByZip(this.state.location, (err, response) => {
+              this.props.weatherReceived(response)
+            })
+        }
+
     }
 
 
@@ -37,7 +49,8 @@ class LocationForm extends Component {
 
         return (
             <div className="locationForm">
-                <form className="inputContainer" onSubmit={this.updateLocation.bind(this)}>
+                <form className="inputContainer" type="submit" onSubmit={this.updateLocation.bind(this)}>
+                    <button className="noShowBtn">Submit</button>
                     <input onChange={this.saveLocation.bind(this)} type="text" placeholder="Where would you like to check the weather?"/>
                     <button onClick={this.updateLocation.bind(this)} type="submit">Submit</button>
                 </form>

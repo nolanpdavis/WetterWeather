@@ -4,7 +4,7 @@ import actions from '../actions'
 import { connect } from 'react-redux'
 import { imgPicker } from '../utils/imgPicker'
 import { getWeather } from '../utils/getWeather'
-import Home from './Home'
+import Header from './Header'
 import DailyWeather from './DailyWeather'
 import Radar from './Radar'
 
@@ -26,13 +26,15 @@ class Background extends Component {
         const backgroundImage = {
             backgroundImage: 'url('+ weatherImage + ')',
             backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
             backgroundAttachment: "fixed"
         }
 
 
         return (
             <div style={backgroundImage}>
-                <Home />
+                <Header />
                 <DailyWeather />
                 <Radar />
             </div>
