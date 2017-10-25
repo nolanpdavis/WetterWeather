@@ -9,6 +9,7 @@
     "build": "npm run clean && NODE_ENV=production webpack",
     "postinstall": "npm run build",
     "start": "webpack -w & nodemon server",
+    "prod": "webpack -p & nodemon server",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
