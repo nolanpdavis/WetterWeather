@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import { Map, Marker, Popup, Tooltip, TileLayer } from 'react-leaflet'
 import { connect } from 'react-redux'
 import actions from '../actions'
 import { getWeatherByLatLng } from '../utils/getWeatherByLatLng'
@@ -64,7 +64,11 @@ class Radar extends Component {
                         <Marker
                             position={mapCenter}
                             onClick={this.recenter.bind(this)}
-                            />
+                            >
+                            <Tooltip direction='right'>
+                                    <span>Click to center the map!</span>
+                            </Tooltip>
+                        </Marker>
                     </Map>
                 </div>
             </div>
